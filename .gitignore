@@ -1,0 +1,30 @@
+# Build output
+target/
+build/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+*.swp
+
+# Maven
+dependency-reduced-pom.xml
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# GraalVM agent output
+/tmp/native-agent-output/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

@@ -1,0 +1,14 @@
+package com.kabusair.nexuscleaner.core.domain.model;
+
+public enum FindingFlag {
+    REFLECTION_SUSPECTED,
+    BOM_ONLY,
+    TRANSITIVE,
+    VERSION_AVAILABLE,
+    PROVIDED_SCOPE,
+    ANNOTATION_PROCESSOR,
+    REMOVABLE_WITH_PARENT,
+    FRAMEWORK_RUNTIME,
+    AUTO_CONFIGURED,
+    COMPONENT_SCANNED
+}
