@@ -4,11 +4,39 @@
 
     <groupId>com.kabusair</groupId>
     <artifactId>nexus-cleaner</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
     <packaging>jar</packaging>
 
     <name>NexusCleaner</name>
-    <description>High-accuracy unused/underused dependency auditor for Maven and Gradle projects.</description>
+    <description>
+        High-accuracy CLI tool that identifies unused, underused, and outdated
+        dependencies in Maven and Gradle projects using ASM bytecode analysis,
+        source parsing, and framework-aware heuristics.
+    </description>
+    <url>https://github.com/khaledhnAbusair/nexus-cleaner</url>
+    <inceptionYear>2026</inceptionYear>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>kabusair</id>
+            <name>Khaled AbuSair</name>
+            <url>https://github.com/khaledhnAbusair</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <url>https://github.com/khaledhnAbusair/nexus-cleaner</url>
+        <connection>scm:git:git://github.com/khaledhnAbusair/nexus-cleaner.git</connection>
+        <developerConnection>scm:git:git@github.com:khaledhnAbusair/nexus-cleaner.git</developerConnection>
+    </scm>
 
     <properties>
         <maven.compiler.release>21</maven.compiler.release>
@@ -32,11 +60,6 @@
             <version>${asm.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.ow2.asm</groupId>
-            <artifactId>asm-tree</artifactId>
-            <version>${asm.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.github.javaparser</groupId>
             <artifactId>javaparser-core</artifactId>
             <version>${javaparser.version}</version>
@@ -45,7 +68,6 @@
             <groupId>tools.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
-            <scope>compile</scope>
         </dependency>
 
         <dependency>
