@@ -1,6 +1,6 @@
 # NexusCleaner
 
-High-accuracy CLI tool that identifies unused, underused, and outdated dependencies in Maven and Gradle projects with enterprise-grade precision.
+High-accuracy unused dependency auditor for any project — Maven, Gradle, and more ecosystems coming (Flutter, Angular, React). Enterprise-grade precision with zero false positives on framework dependencies.
 
 Built with Java 21, Clean Architecture, ASM bytecode analysis, and Virtual Threads.
 
@@ -155,6 +155,7 @@ JSON output, fail on issues, 3% underuse threshold, skip test deps.
 | FRAMEWORK_RUNTIME | Known framework group (Spring, Hibernate, Camel, etc.) or starter/meta-dependency. |
 | AUTO_CONFIGURED | JAR carries `META-INF/spring.factories` or `META-INF/spring/*.imports` with auto-config classes. |
 | REFLECTION_SUSPECTED | A string constant matching a class name was passed to `Class.forName()` or similar. |
+| COMPONENT_SCANNED | Dependency's package matches `@SpringBootApplication(scanBasePackages)` or `@ComponentScan(basePackages)` -- auto-discovered by Spring at runtime. |
 | VERSION_AVAILABLE | A newer version exists on Maven Central. |
 | BOM_ONLY | Import-scope BOM. Never appears on the classpath. |
 
@@ -208,4 +209,6 @@ bootstrap/
 
 ## License
 
-MIT
+This project is licensed under the [MIT License](LICENSE).
+
+Copyright (c) 2026 Khaled AbuSair
