@@ -1,8 +1,128 @@
 # NexusCleaner
 
+[![Java](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://openjdk.org/projects/jdk/21/)
+[![License](https://img.shields.io/badge/License-MIT-2EA043?style=for-the-badge)](LICENSE)
+[![Build](https://img.shields.io/badge/Build-Passing-brightgreen?style=for-the-badge)]()
+[![GraalVM](https://img.shields.io/badge/GraalVM-Native_Ready-EE4C2C?style=for-the-badge&logo=graalvm&logoColor=white)]()
+[![Architecture](https://img.shields.io/badge/Architecture-Clean-blueviolet?style=for-the-badge)]()
+
 High-accuracy unused dependency auditor for any project — Maven, Gradle, and more ecosystems coming (Flutter, Angular, React). Enterprise-grade precision with zero false positives on framework dependencies.
 
 Built with Java 21, Clean Architecture, ASM bytecode analysis, and Virtual Threads.
+
+---
+
+## Console Output
+
+```
+NexusCleaner audit
+Project : /home/user/my-enterprise-app
+Build   : MAVEN
+Modules : 27 (common, echeques-core, echeques-billing, ...)
+Sources : 28 main roots, 14 test roots
+When    : 2026-04-06T12:59:56Z
+
+[UNUSED] 199
+  - commons-dbcp:commons-dbcp:1.4  (scope=COMPILE)
+      reason : No usage evidence at any layer
+  - ch.qos.reload4j:reload4j:1.2.21  (scope=COMPILE)
+      reason : No usage evidence at any layer
+  - com.google.inject:guice:5.1.0  (scope=COMPILE)
+      reason : No usage evidence at any layer
+  - org.jvnet.jaxb2.maven2:maven-jaxb2-plugin:0.15.3  (scope=COMPILE)
+      reason : No usage evidence at any layer
+  - com.progressoft.jupiter:export-rest:v20.5.1  (scope=COMPILE)
+      reason : No usage evidence at any layer
+  ...
+
+[UNDERUSED] 73
+  - org.hibernate.orm:hibernate-core:7.2.1.Final  (scope=COMPILE)
+      reason : Usage ratio 0.2% is below threshold
+      flags  : REFLECTION_SUSPECTED, FRAMEWORK_RUNTIME
+  - com.google.guava:guava:32.1.1-jre  (scope=COMPILE)
+      reason : Usage ratio 0.3% is below threshold
+  - org.springframework:spring-core:7.0.6  (scope=COMPILE)
+      reason : Usage ratio 0.6% is below threshold
+      flags  : AUTO_CONFIGURED, FRAMEWORK_RUNTIME
+  ...
+
+[HEALTHY] 101
+  - org.springframework.boot:spring-boot-starter-data-jpa:4.0.5
+      flags  : FRAMEWORK_RUNTIME, TRANSITIVE
+  - org.ehcache:ehcache:3.11.1
+      flags  : FRAMEWORK_RUNTIME
+  ...
+
+[INCONCLUSIVE] 221
+  - org.apache.camel:camel-core:4.12.0  (scope=COMPILE)
+      reason : Framework/runtime dependency — no direct usage but likely wired by container
+      flags  : FRAMEWORK_RUNTIME
+  ...
+
+Summary
+  total        : 600
+  unused       : 199
+  underused    : 73
+  outdated     : 0
+  healthy      : 101
+  inconclusive : 221
+  excluded     : 6
+```
+
+## JSON Output (Grouped by Health)
+
+```json
+{
+  "metadata": {
+    "project": "/home/user/my-enterprise-app",
+    "buildSystem": "MAVEN",
+    "generatedAt": "2026-04-06T12:59:56Z",
+    "multiModule": true,
+    "modules": ["common", "echeques-core", "echeques-billing", "..."],
+    "sourceRoots": 28,
+    "testRoots": 14,
+    "summary": {
+      "total": 600,
+      "unused": 199,
+      "underused": 73,
+      "outdated": 0,
+      "healthy": 101,
+      "inconclusive": 221,
+      "excluded": 6
+    }
+  },
+  "results": {
+    "unused": [
+      {
+        "groupId": "commons-dbcp",
+        "artifactId": "commons-dbcp",
+        "version": "1.4",
+        "scope": "COMPILE",
+        "direct": true,
+        "rationale": "No usage evidence at any layer",
+        "flags": []
+      }
+    ],
+    "underused": [
+      {
+        "groupId": "org.hibernate.orm",
+        "artifactId": "hibernate-core",
+        "version": "7.2.1.Final",
+        "scope": "COMPILE",
+        "direct": true,
+        "usageRatio": "0.2%",
+        "rationale": "Usage ratio 0.2% is below threshold",
+        "flags": ["REFLECTION_SUSPECTED", "FRAMEWORK_RUNTIME"]
+      }
+    ],
+    "healthy": [...],
+    "inconclusive": [...],
+    "excluded": [...]
+  }
+}
+```
+
+---
 
 ## Key Features
 
