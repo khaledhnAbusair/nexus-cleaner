@@ -18,7 +18,7 @@ Built with Java 21, Clean Architecture, ASM bytecode analysis, and Virtual Threa
 NexusCleaner audit
 Project : /home/user/my-enterprise-app
 Build   : MAVEN
-Modules : 27 (common, echeques-core, echeques-billing, ...)
+Modules : 27 (common, payments-core, billing-service, ...)
 Sources : 28 main roots, 14 test roots
 When    : 2026-04-06T12:59:56Z
 
@@ -31,7 +31,7 @@ When    : 2026-04-06T12:59:56Z
       reason : No usage evidence at any layer
   - org.jvnet.jaxb2.maven2:maven-jaxb2-plugin:0.15.3  (scope=COMPILE)
       reason : No usage evidence at any layer
-  - com.progressoft.jupiter:export-rest:v20.5.1  (scope=COMPILE)
+  - com.example.internal:export-rest:v20.5.1  (scope=COMPILE)
       reason : No usage evidence at any layer
   ...
 
@@ -78,7 +78,7 @@ Summary
     "buildSystem": "MAVEN",
     "generatedAt": "2026-04-06T12:59:56Z",
     "multiModule": true,
-    "modules": ["common", "echeques-core", "echeques-billing", "..."],
+    "modules": ["common", "payments-core", "billing-service", "..."],
     "sourceRoots": 28,
     "testRoots": 14,
     "summary": {
