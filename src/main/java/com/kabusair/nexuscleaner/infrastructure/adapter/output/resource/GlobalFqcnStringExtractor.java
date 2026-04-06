@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
  * contain FQCNs. This catches patterns invisible to both bytecode and source
  * import analysis:
  * <ul>
- *   <li>Jupiter Framework registry: {@code "com.progressoft.jupiter.business.MyHandler"}</li>
+ *   <li>Custom framework registry: {@code "com.example.internal.business.MyHandler"}</li>
  *   <li>Spring XML beans: {@code class="com.example.Foo"}</li>
  *   <li>Dynamic class loading with string concatenation or constants</li>
  *   <li>Configuration keys that hold class names</li>
